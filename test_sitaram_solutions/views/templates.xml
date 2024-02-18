@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="configure_optional_products_test" inherit_id="sale_product_configurator.configure_optional_products" name="Stocks Modal">
+        <xpath expr="//tr[hasclass('o_total_row')]/td" position="attributes">
+            <attribute name="colspan">0</attribute>
+        </xpath>
+        <xpath expr="//tr[hasclass('o_total_row')]/td" position="before">
+            <td colspan="3">
+                <table class="table table-striped">
+                    <thead>
+                        <th><span class='label'>Attribute values</span></th>
+                        <th class="text-center"><span class='label'>On hand QTY</span></th>
+                        <th class="text-center td-price"><span class='label'>Forcasted QTY</span></th>
+                    </thead>
+                    <tbody>
+                        <td class="js_variant_att_vals" t-att-data-product-tmpl-id="product.product_tmpl_id.id"><t t-out="', '.join(product_variant.product_template_attribute_value_ids.mapped('name'))"/></td>
+                        <td class="text-center js_variant_qty_available"><t t-out="product_variant.qty_available"/></td>
+                        <td class="text-center js_variant_virtual_available"><t t-out="product_variant.virtual_available"/></td>
+                    </tbody>
+                </table>
+            </td>
+        </xpath>
+    </template>
+</odoo>
